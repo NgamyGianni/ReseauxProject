@@ -61,9 +61,9 @@ print(macsrc, "        ", macdst)
 #Adresse ip : 
 ipsrc = LStrToIp(L[26:30])
 ipdst = LStrToIp(L[30:34])
-print(ipsrc, "         ", ipdst)
+print(ipsrc, "        ", ipdst)
 
 #Num port : 
 portsrc = LStrToPort(L[34:36])
 portdst = LStrToPort(L[36:38])
-print(portsrc, "       ", portdst)
+print(portsrc, "        ", portdst)
