@@ -1,7 +1,7 @@
 import sys
 
-#file src = sys.argv[1]
-#file dst = sys.argv[2]
+# file src = sys.argv[1]
+# file dst = sys.argv[2]
 
 # Test si on peut ouvrir le fichier donné dans l'executable
 try:
@@ -28,14 +28,9 @@ def LStrToInt(L):
 		res.append(int("0x"+e, base=16))
 	return res
 
-Lres = LStrToInt(L)
-
-
-print(Lres)
-
 def LStrToIp(L):
 	""" list[str] -> str : Transforme une liste d'hexa en adresse ip en str"""
-	L = LstrToInt(L)
+	L = LStrToInt(L)
 	res = ""
 	for e in L:
 		res += str(e)+"."
@@ -50,4 +45,25 @@ def LStrToMac(L):
 	res = res[:len(res)-1]
 	return  res
 
-print(LStrToMac(L))
+def LStrToPort(L):
+	""" list[str] -> str : Transforme une liste d'hexa en numéro de port en str"""
+	res = 0
+	tmp = LStrToInt(L)
+	for e in tmp:
+		res += e
+	return res
+
+#Adresse MAC : 
+macsrc = LStrToMac(L[6:12])
+macdst = LStrToMac(L[0:6])
+print(macsrc, "        ", macdst)
+
+#Adresse ip : 
+ipsrc = LStrToIp(L[26:30])
+ipdst = LStrToIp(L[30:34])
+print(ipsrc, "         ", ipdst)
+
+#Num port : 
+portsrc = LStrToPort(L[34:36])
+portdst = LStrToPort(L[36:38])
+print(portsrc, "       ", portdst)
