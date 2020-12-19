@@ -3,18 +3,14 @@ import sys
 #file src = sys.argv[1]
 #file dst = sys.argv[2]
 
-# Test si on peut ouvrir les 2 fichiers donnés dans l'executable
+# Test si on peut ouvrir le fichier donné dans l'executable
 try:
 	f = open(sys.argv[1], "r")
 except: 
     print("Erreur: Le fichier source n'existe pas.")
     exit()
 
-try:
-	d = open(sys.argv[2], "w")
-except: 
-    print("Erreur: Le fichier destination n'existe pas.")
-    exit()
+d = open(sys.argv[2], "w") # Ouverture fichier dans lequel on va écrire
 
 L = list() # Contient les données de la trame
 Lres = list() # Test
