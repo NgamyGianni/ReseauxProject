@@ -56,9 +56,25 @@ def LLtoLLclean(LL):
 				tmp.append(LL[i][j])
 		res.append(tmp)
 		tmp = []
-	
+
 	del res[0]
 	return res
 
 print(LLtoLLclean(LtoLL(LL)))
 print(len(LLtoLLclean(LtoLL(LL))))
+
+def analyseEthernet(L):
+	macDst=LStrToMac(L[0:6])
+	macSrc=LStrToMac(L[6:12])
+	if L[12:14] == ["08","00"]:
+		etherType="IPv4"
+	"""elif L[12:14] == ["86","DD"]:
+		etherType="IPv6""""
+	elif L[12:14] == ["08","06"]:
+		etherType="ARP"
+	"""elif L[12:14] == ["80","35"]:
+		etherType="RARP"
+	elif L[12:14] == ["80","9B"]:
+		etherType="AppleTalk"""""
+	else:
+		print("Erreur : Champ Ethernet Type non reconnu")
