@@ -102,6 +102,6 @@ def analyseEthernet(L):
 	print("	Champ Ethernet Type : 0x",L[12],L[13],etherType)
 	return etherType
 
-print(analyseEthernet(LL[1]))
+print(analyseEthernet(LL[1])
 
 def analyseIp(L):
