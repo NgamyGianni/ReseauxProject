@@ -45,15 +45,12 @@ def LtoLL(L):
 		if L[i][0] == "0000":
 			LL.append(tmp)
 			tmp = []
-<<<<<<< HEAD
 			j = 0
 		
 		if i < len(L)-1 and L[i+1][0] != "0000":
 			j+=1
-=======
 
 		if i < len(L)-1 and L[i+1][0] != "0x00":
->>>>>>> ce0b9bd8e082a303bf758add9c48faad00d3fbbc
 			for x in range(int(L[i+1][0], base=16)-int(L[i][0], base=16)+1):
 				if formatValideByte(L[i][x]) or formatValideOffset(L[i][x]):
 					tmp.append(L[i][x])
@@ -115,3 +112,4 @@ def analyseEthernet(L):
 print(analyseEthernet(LL[1]))
 
 def analyseIp(L):
+	pass
