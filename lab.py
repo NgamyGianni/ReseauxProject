@@ -1,4 +1,4 @@
-f = open("testLab.txt", "r")
+f = open("wiretest.txt", "r")
 L = list()
 
 for line in f:
@@ -14,7 +14,7 @@ def erreur(pos):
 
 # valide le format des offset de la trame
 def formatValideOffset(x):
-	return x[:2] == "0x" and formatValideByte(x[2:])
+	return len(x) == 4 and formatValideByte(x[:2]) and formatValideByte(x[2:])
 
 # Valide le format des octets de la trame
 def formatValideByte(x):
@@ -40,18 +40,25 @@ for e in L:
 def LtoLL(L):
 	LL = []
 	tmp = []
+	j = 0
 	for i in range(len(L)):
-		if L[i][0] == "0x00":
+		if L[i][0] == "0000":
 			LL.append(tmp)
 			tmp = []
+			j = 0
+		
+		if i < len(L)-1 and L[i+1][0] != "0000":
+			j+=1
 
 		if i < len(L)-1 and L[i+1][0] != "0x00":
 			for x in range(int(L[i+1][0], base=16)-int(L[i][0], base=16)+1):
 				if formatValideByte(L[i][x]) or formatValideOffset(L[i][x]):
 					tmp.append(L[i][x])
-			if len(tmp) != int(L[i+1][0], base=16)-int(L[i][0], base=16)+1:
+			if len(tmp) != int(L[i+1][0], base=16)+j:
+				print(len(tmp))
 				erreur(tmp)
 		else:
+			j+=1
 			for x in range(len(L[i])):
 				if formatValideByte(L[i][x]) or formatValideOffset(L[i][x]):
 					tmp.append(L[i][x])
@@ -61,7 +68,7 @@ def LtoLL(L):
 	del LL[0]
 	return LL
 
-print(LtoLL(LL))
+#print(LtoLL(LL))
 
 # Retire les offset de LL : ne garde que les formats valides des octets de la trame
 def LLtoLLclean(LL):
@@ -78,7 +85,7 @@ def LLtoLLclean(LL):
 	del res[0]
 	return res
 
-#print(LLtoLLclean(LtoLL(LL)))
+print(LLtoLLclean(LtoLL(LL)))
 #print(len(LLtoLLclean(LtoLL(LL))))
 
 def analyseEthernet(L):
@@ -105,3 +112,4 @@ def analyseEthernet(L):
 print(analyseEthernet(LL[1])
 
 def analyseIp(L):
+	pass
