@@ -95,15 +95,16 @@ def analyseEthernet(L):
 		etherType="IPv4"
 	elif L[12:14] == ["08","06"]:
 		etherType="ARP"
+	else:
+		print("Erreur : Champ Ethernet Type non reconnu")
+		quit()
 	"""elif L[12:14] == ["86","DD"]:
 		etherType="IPv6
 	elif L[12:14] == ["80","35"]:
 		etherType="RARP
 	elif L[12:14] == ["80","9B"]:
 		etherType="AppleTalk"""
-	else:
-		print("Erreur : Champ Ethernet Type non reconnu")
-		quit()
+
 	print("	Champ Ethernet Adresse Mac Destination : ",macDst)
 	print("	Champ Ethernet Adresse Mac Source : ",macSrc)
 	print("	Champ Ethernet Type : 0x",L[12],L[13],etherType)
