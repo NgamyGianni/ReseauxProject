@@ -46,7 +46,7 @@ def LtoLL(L):
 			LL.append(tmp)
 			tmp = []
 			j = 0
-		
+
 		if i < len(L)-1 and L[i+1][0] != "0000":
 			j+=1
 
