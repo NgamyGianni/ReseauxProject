@@ -78,3 +78,7 @@ def analyseEthernet(L):
 		etherType="AppleTalk"""""
 	else:
 		print("Erreur : Champ Ethernet Type non reconnu")
+		quit()
+	print("Champ Ethernet Adresse Mac Destination : ",macDst)
+	print("Champ Ethernet Adresse Mac Source : ",macSrc)
+	print("Champ Ethernet Type : 0x",L[12],L[13],etherType)
