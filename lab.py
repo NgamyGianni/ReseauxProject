@@ -45,10 +45,15 @@ def LtoLL(L):
 		if L[i][0] == "0000":
 			LL.append(tmp)
 			tmp = []
+<<<<<<< HEAD
 			j = 0
 		
 		if i < len(L)-1 and L[i+1][0] != "0000":
 			j+=1
+=======
+
+		if i < len(L)-1 and L[i+1][0] != "0x00":
+>>>>>>> ce0b9bd8e082a303bf758add9c48faad00d3fbbc
 			for x in range(int(L[i+1][0], base=16)-int(L[i][0], base=16)+1):
 				if formatValideByte(L[i][x]) or formatValideOffset(L[i][x]):
 					tmp.append(L[i][x])
@@ -91,18 +96,22 @@ def analyseEthernet(L):
 	macSrc=LStrToMac(L[6:12])
 	if L[12:14] == ["08","00"]:
 		etherType="IPv4"
+	elif L[12:14] == ["08","06"]:
+		etherType="ARP"
 	"""elif L[12:14] == ["86","DD"]:
-		etherType="IPv6"""
-	"""elif L[12:14] == ["08","06"]:
-		etherType="ARP"""
-	"""elif L[12:14] == ["80","35"]:
-		etherType="RARP"
+		etherType="IPv6
+	elif L[12:14] == ["80","35"]:
+		etherType="RARP
 	elif L[12:14] == ["80","9B"]:
 		etherType="AppleTalk"""
-	"""else:
+	else:
 		print("Erreur : Champ Ethernet Type non reconnu")
 		quit()
-	print("Champ Ethernet Adresse Mac Destination : ",macDst)
-	print("Champ Ethernet Adresse Mac Source : ",macSrc)
-	print("Champ Ethernet Type : 0x",L[12],L[13],etherType)
-	return etherType"""
+	print("	Champ Ethernet Adresse Mac Destination : ",macDst)
+	print("	Champ Ethernet Adresse Mac Source : ",macSrc)
+	print("	Champ Ethernet Type : 0x",L[12],L[13],etherType)
+	return etherType
+
+print(analyseEthernet(LL[1]))
+
+def analyseIp(L):
