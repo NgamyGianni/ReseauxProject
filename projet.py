@@ -2,7 +2,7 @@ import sys
 
 # file src = sys.argv[1]
 # file dst = sys.argv[2]
-
+"""
 # Test si on peut ouvrir le fichier donné dans l'executable
 try:
 	f = open(sys.argv[1], "r")
@@ -20,7 +20,7 @@ for line in f:
 	L.extend(line.split())
 
 print(L)
-
+"""
 def LStrToInt(L):
 	""" list[str] -> str : Transforme une liste d'hexa en liste d'entier"""
 	res = list()
@@ -51,7 +51,7 @@ def LStrToPort(L):
 	tmp = LStrToInt(L)
 	for e in tmp:
 		res += e
-	return res
+	return str(res)
 
 def LStrToStr(L):
 	""" list[str] -> str : Transforme une liste d'hexa en un mot Ox"""
@@ -71,7 +71,7 @@ def LStrToBin(L):
 		for i in range(len(b[2:])):
 			res.append(b[2+i])
 	return res
-
+"""
 #Adresse MAC :
 macsrc = LStrToMac(L[6:12])
 macdst = LStrToMac(L[0:6])
@@ -86,3 +86,4 @@ print(ipsrc, "        ", ipdst)
 portsrc = LStrToPort(L[34:36])
 portdst = LStrToPort(L[36:38])
 print(portsrc, "        ", portdst)
+"""

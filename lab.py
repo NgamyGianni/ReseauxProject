@@ -122,14 +122,14 @@ def analyseIp(L):
 	res += "	Type of service : "+projet.LStrToStr(L[15])+"\n"
 	res += "	Total Length : "+projet.LStrToStr(L[16:18])+" ("+projet.LStrToPort(L[16:18])+")"+"\n"
 	res += "	Identifier : "+projet.LStrToStr(L[18:20])+"\n"
-	res += "    Flags : "+projet.LStrToStr(L[20:22])+"\n"
+	res += "	Flags : "+projet.LStrToStr(L[20:22])+"\n"
 	Lb = projet.LStrToBin(L[20:22])
-	res += "    	Reserve : "+Lb[0]+"\n"
-	res += "		DF : "+Lb[1]+"\n"
-	res += "		MF : "+Lb[2]+"\n"
-	res += "		Fragment offset : "
+	res += "	Reserve : "+Lb[0]+"\n"
+	res += "	DF : "+Lb[1]+"\n"
+	res += "	MF : "+Lb[2]+"\n"
+	res += "	Fragment offset : "
 	for i in range(3,len(Lb)):
-		res+= Lb[i]
+		res += Lb[i]
 	res += "\n"
 	
 
