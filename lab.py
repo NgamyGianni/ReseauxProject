@@ -154,7 +154,7 @@ def analyseTCP(L):
 	res += "	Acknowledgment number : "+projet.LStrToStr(L[i+8:i+12])+" ("+projet.LStrToPort(L[i+8:i+12])+")"+"\n"
 	Lb = projet.LStrToBin(L[i+12:i+14])
 	res += "	Transport Header Length: "+Lb[0]+Lb[1]+Lb[2]+Lb[3]+"("+str(int("0b"+Lb[0]+Lb[1]+Lb[2]+Lb[3], base=2)*4)+")"+"\n"
-	res += "	Flags : "+projet.LStrToStr(Lb[20:22])+"\n"
+	res += "	Flags : "+projet.LStrToStr((L[i+12][1]).extends(L[i+13]))+"\n"
 	res += "		Reserved : "
 	for j in range(4,10):
 		res+= Lb[j]
