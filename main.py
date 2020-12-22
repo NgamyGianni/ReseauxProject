@@ -25,9 +25,22 @@ for e in L:
 		LL.append(e.split())
 
 LL = lab.LLtoLLclean(lab.LtoLL(LL))
+res = ""
 
 for i in range(len(LL)):
-	d.write(lab.analyseEthernet(LL[i])+lab.analyseIp(LL[i])[0]+lab.analyseTCP(LL[i])[0]+lab.analyseHTTP(LL[i]))
+	res += "\nTrame "+str(i)+" :\n"
+	if len(LL[i]) < 14:
+		print("")
+		exit()
+	res += "\n"+lab.analyseETHERNET(LL[i])
+	if len(LL[i]) > 14:
+		res += ""+lab.analyseIP(LL[i])[0]
+	if len(LL[i]) > 34:
+		res += ""+lab.analyseTCP(LL[i])[0]
+	if len(LL[i]) > 54:
+		res += ""+lab.analyseHTTP(LL[i])
+
+d.write(res+"\n")
 
 d.close()
 f.close()
