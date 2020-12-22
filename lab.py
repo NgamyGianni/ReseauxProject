@@ -153,6 +153,7 @@ def analyseTCP(L):
 	res += "	Sequence Number : "+projet.LStrToStr(L[i+4:i+8])+"("+projet.LStrToPort(L[i+4:i+8])+")"+"\n"
 	res += "	Acknowledgment number : "+projet.LStrToStr(L[i+8:i+12])+" ("+projet.LStrToPort(L[i+8:i+12])+")"+"\n"
 	Lb = projet.LStrToBin(L[i+12:i+14])
+	print(Lb)
 	res += "	Transport Header Length: "+projet.LStrToStr(Lb[0:4])+"\n"
 	res += "	Flags : "+projet.LStrToStr(L[20:22])+"\n"
 	Lb = projet.LStrToBin(L[20:22])
