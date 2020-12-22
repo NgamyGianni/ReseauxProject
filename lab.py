@@ -1,3 +1,5 @@
+import projet
+
 f = open("wiretest.txt", "r")
 L = list()
 
@@ -85,12 +87,13 @@ def LLtoLLclean(LL):
 	del res[0]
 	return res
 
-print(LLtoLLclean(LtoLL(LL)))
+LL = LLtoLLclean(LtoLL(LL))
 #print(len(LLtoLLclean(LtoLL(LL))))
 
 def analyseEthernet(L):
-	macDst=LStrToMac(L[0:6])
-	macSrc=LStrToMac(L[6:12])
+	res = "Ethernet :\n"
+	macDst=projet.LStrToMac(L[0:6])
+	macSrc=projet.LStrToMac(L[6:12])
 	if L[12:14] == ["08","00"]:
 		etherType="IPv4"
 	elif L[12:14] == ["08","06"]:
@@ -105,16 +108,20 @@ def analyseEthernet(L):
 	elif L[12:14] == ["80","9B"]:
 		etherType="AppleTalk"""
 
-	print("	Champ Ethernet Adresse Mac Destination : ",macDst)
-	print("	Champ Ethernet Adresse Mac Source : ",macSrc)
-	print("	Champ Ethernet Type : ",LStrToStr(L[12:14])," ",etherType)
-	return etherType
+	res += "	Adresse Mac Destination : "+macDst+"\n"
+	res += "	Adresse Mac Source : "+macSrc+"\n"
+	res += "	Type : "+projet.LStrToStr(L[12:14])+" "+etherType+"\n"
+	return res
 
-print(analyseEthernet(LL[1])
+print(analyseEthernet(LL[0]))
 
 def analyseIp(L):
-	print(" Champ Ip Version : 0x",L[14][0]," (",L[14][0],")")
-	print(" Champ Ip Header length : 0x",L[14][1]," (",L[14][1]*4,")")
-	print(" Champ Ip Type of service : ",LStrToStr(L[15]))
-	print(" Champ Ip Total Length : ",LStrToStr(L[16:18])," (",LStrToPort(L[16:18]),")")
-	print(" Champ Ip Identifier : ",LStrToStr(L[18:20]))
+	res = "Ip : \n"
+	res += "	Version : 0x"+str(L[14][0])+" ("+str(L[14][0])+")"+"\n"
+	res += "	Header length : 0x"+str(L[14][1])+" ("+str(L[14][1]*4)+")"+"\n"
+	res += "	Type of service : "+projet.LStrToStr(L[15])+"\n"
+	res += "	Total Length : "+projet.LStrToStr(L[16:18])+" ("+projet.LStrToPort(L[16:18])+")"+"\n"
+	res += "	Identifier : "+projet.LStrToStr(L[18:20])+"\n"
+	return res
+
+print(analyseIp(LL[0]))
