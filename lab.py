@@ -137,8 +137,35 @@ def analyseIp(L):
 	res += "	Adresse IP Source : "+projet.LStrToStr(L[26:30])+"("+projet.LStrToIp(L[26:30])+")"+"\n"
 	res += "	Adresse IP Destination : "+projet.LStrToStr(L[30:34])+"("+projet.LStrToIp(L[30:34])+")"+"\n"
 	if int(L[14][1])*4 == 20:
-		return res
-	#return res
+		return res,34
+	"""option=L[34]
+	res += "	Option :"+projet.LStrToStr(L)+"("+projet.LStrToPort(L[23])+")"+"\n
+	return res,int(L[14][1])*4"""
 
 
 print(analyseIp(LL[0]))
+
+def AnalyseTCP(L):
+	a,i=analyseIp(L)
+	res = "TCP : \n"
+	res += "	Source port number : "+projet.LStrToStr(L[i:i+2])+"("+projet.LStrToPort(L[i:i+2])+")"+"\n"
+	res += "	Destination port number : "+projet.LStrToStr(L[i+2:i+4])+"("+projet.LStrToPort(L[i+2:i+4])+")"+"\n"
+	res += "	Sequence Number : "+projet.LStrToStr(L[i+4:i+8])+"("+projet.LStrToPort(L[i+4:i+8])+")"+"\n"
+	res += "	Acknowledgment number : "+projet.LStrToStr(L[i+8:i+12])+" ("+projet.LStrToPort(L[i+8:i+12])+")"+"\n"
+	Lb = projet.LStrToBin(L[i+12:i+14])
+	res += "	Transport Header Length: "+projet.LStrToStr(Lb[0:4])+"\n"
+	res += "	Flags : "+projet.LStrToStr(L[20:22])+"\n"
+	Lb = projet.LStrToBin(L[20:22])
+	res += "    	Reserve : "+Lb[0]+"\n"
+	res += "		DF : "+Lb[1]+"\n"
+	res += "		MF : "+Lb[2]+"\n"
+	res += "		Fragment offset : "
+	for i in range(3,len(Lb)):
+		res+= Lb[i]
+	res += "\n"
+	res += "	Time To Live : "+projet.LStrToStr(L[22])+"("+projet.LStrToPort(L[22])+")"+"\n"
+	res += "	Protocol : "+projet.LStrToStr(L[23])+"("+projet.LStrToPort(L[23])+")"+"\n"
+	res += "	Header checksum : "+projet.LStrToStr(L[24:26])+"\n"
+	res += "	Adresse IP Source : "+projet.LStrToStr(L[26:30])+"("+projet.LStrToIp(L[26:30])+")"+"\n"
+	res += "	Adresse IP Destination : "+projet.LStrToStr(L[30:34])+"("+projet.LStrToIp(L[30:34])+")"+"\n"
+	return res
