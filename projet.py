@@ -67,7 +67,7 @@ def LStrToBin(L):
 		b=bin(e)
 		if len(b[2:]) < 8:
 			for i in range(8-len(b[2:])):
-				res.append(0)
+				res.append("0")
 		for i in range(len(b[2:])):
 			res.append(b[2+i])
 	return res
