@@ -96,12 +96,12 @@ def analyseEthernet(L):
 	macSrc=projet.LStrToMac(L[6:12])
 	if L[12:14] == ["08","00"]:
 		etherType="IPv4"
-	elif L[12:14] == ["08","06"]:
+	"""elif L[12:14] == ["08","06"]:
 		etherType="ARP"
 	else:
 		print("Erreur : Champ Ethernet Type non reconnu")
 		quit()
-	"""elif L[12:14] == ["86","DD"]:
+	elif L[12:14] == ["86","DD"]:
 		etherType="IPv6
 	elif L[12:14] == ["80","35"]:
 		etherType="RARP
@@ -122,6 +122,8 @@ def analyseIp(L):
 	res += "	Type of service : "+projet.LStrToStr(L[15])+"\n"
 	res += "	Total Length : "+projet.LStrToStr(L[16:18])+" ("+projet.LStrToPort(L[16:18])+")"+"\n"
 	res += "	Identifier : "+projet.LStrToStr(L[18:20])+"\n"
+	res += "    Flags : "+projet.LStrToStr(L[20:22])+"\n"
+	res += "    	Reserve :"
 	return res
 
 print(analyseIp(LL[0]))
