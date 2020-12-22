@@ -26,7 +26,8 @@ for e in L:
 
 LL = lab.LLtoLLclean(lab.LtoLL(LL))
 
-d.write(lab.analyseEthernet(LL[0])+lab.analyseIp(LL[0]))
+for i in range(len(LL)):
+	d.write(lab.analyseEthernet(LL[i])+lab.analyseIp(LL[i])[0]+lab.analyseTCP(LL[i])[0]+lab.analyseHTTP(LL[i]))
 
 d.close()
 f.close()

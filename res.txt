@@ -1,0 +1,40 @@
+Ethernet :
+	Adresse Mac Destination : a0:8e:78:fd:b9:44
+	Adresse Mac Source : f0:18:98:02:8c:6b
+	Type : 0x0800 IPv4
+Ip : 
+	Version : 0x4 (4)
+	Header length : 0x5 (20)
+	Type of service : 0x00
+	Total Length : 0x0047 (71)
+	Identifier : 0xf13a
+	Flags : 0x0000
+		Reserve : 0
+		DF : 0
+		MF : 0
+		Fragment offset : 0000000000000
+	Time To Live : 0x40(64)
+	Protocol : 0x11(17)
+	Header checksum : 0x9393
+	Adresse IP Source : 0xc0a80012(192.168.0.18)
+	Adresse IP Destination : 0xd5a35f7a(213.163.95.122)
+TCP : 
+	Source port number : 0xd005(53253)
+	Destination port number : 0xc35d(50013)
+	Sequence Number : 0x00336a14(3369492)
+	Acknowledgment number : 0x9078acd7 (2423827671)
+	Transport Header Length: 1000(32)
+	Flags : 0x
+		Reserved : 000000
+		URG : 0
+		ACK : 1
+		PSH : 0
+		RST : 0
+		SYN : 0
+		FIN : 0
+	Window : 0x9a8f(39567)
+	Checksum : 0x0013(19)
+	Urgent Pointer : 0xe0be(57534)
+HTTP : 
+	abc abc
+	aabc

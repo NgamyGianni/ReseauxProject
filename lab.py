@@ -124,7 +124,7 @@ def analyseIp(L):
 	res += "	Identifier : "+projet.LStrToStr(L[18:20])+"\n"
 	res += "	Flags : "+projet.LStrToStr(L[20:22])+"\n"
 	Lb = projet.LStrToBin(L[20:22])
-	res += "    	Reserve : "+Lb[0]+"\n"
+	res += "		Reserve : "+Lb[0]+"\n"
 	res += "		DF : "+Lb[1]+"\n"
 	res += "		MF : "+Lb[2]+"\n"
 	res += "		Fragment offset : "
@@ -155,7 +155,7 @@ def analyseTCP(L):
 	Lb = projet.LStrToBin(L[i+12:i+14])
 	res += "	Transport Header Length: "+Lb[0]+Lb[1]+Lb[2]+Lb[3]+"("+str(int("0b"+Lb[0]+Lb[1]+Lb[2]+Lb[3], base=2)*4)+")"+"\n"
 	res += "	Flags : "+projet.LStrToStr(Lb[20:22])+"\n"
-	res += "    	Reserved : "
+	res += "		Reserved : "
 	for j in range(4,10):
 		res+= Lb[j]
 	res += "\n"
@@ -174,11 +174,14 @@ print(analyseTCP(LL[0])[0])
 def analyseHTTP(L):
 	a,i=analyseTCP(L)
 	tmp=list()
-	print(L)
 	res = "HTTP : \n"
-	while L[i] != "0d" and L[i+1] != "0a" and L[i+2] != "0d" and L[i+3] != "0a":
-		tmp.append(L[i])
-
+	tmp.append("09")
+	while not(L[i] == "0d" and L[i+1] == "0a" and L[i+2] == "0d" and L[i+3] == "0a"):
+		if L[i] == "0a":
+			tmp.append(L[i])
+			tmp.append("09")
+		else:
+			tmp.append(L[i])
 		i+=1
 
 	bytes_object=bytes.fromhex(projet.LStrToStr(tmp)[2:])
@@ -186,4 +189,4 @@ def analyseHTTP(L):
 	res+=bytes_object.decode("ASCII")
 	return res
 
-#print(analyseHTTP(LL[0]))
+print(analyseHTTP(LL[0]))
