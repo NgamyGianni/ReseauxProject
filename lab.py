@@ -172,12 +172,10 @@ def analyseTCP(L):
 
 def analyseHTTP(L):
 	a,i=analyseTCP(L)
-	LL=list()
-	j=0
+	tmp=list()
 	res = "HTTP : \n"
-	while L[i:i+j] != ["0d","0a","0d","0a"]:
-		LL.extend(L[i:i+j])
-		j=j+4
-	bytes_object=bytes.fromhex(LStrToStr(LL))
+	while L[i] != "0d" and L[i+1] != "0a" and L[i+2] != "0d" and L[i+3] != "0a":
+		tmp.append(L[i])
+	bytes_object=bytes.fromhex(LStrToStr(LL)[2:])
 	res+=bytes_object.decode("ASCII")
 	return res
