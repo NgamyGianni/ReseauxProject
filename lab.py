@@ -176,7 +176,7 @@ def analyseHTTP(L):
 	j=0
 	res = "HTTP : \n"
 	while L[i:i+j] != ["0d","0a","0d","0a"]:
-		LL.append(L[i:i+j])
+		LL.extend(L[i:i+j])
 		j=j+4
 	bytes_object=bytes.fromhex(LStrToStr(LL))
 	res+=bytes_object.decode("ASCII")
