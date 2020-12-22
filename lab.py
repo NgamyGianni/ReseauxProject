@@ -173,6 +173,7 @@ def analyseTCP(L):
 def analyseHTTP(L):
 	a,i=analyseTCP(L)
 	LL=list()
+	j=0
 	res = "HTTP : \n"
 	while L[i:i+j] != ["0d","0a","0d","0a"]:
 		LL.append(L[i:i+j])
