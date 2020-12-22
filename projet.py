@@ -48,10 +48,9 @@ def LStrToMac(L):
 def LStrToPort(L):
 	""" list[str] -> str : Transforme une liste d'hexa en numéro de port en str"""
 	res = 0
-	tmp = LStrToInt(L)
-	for e in tmp:
-		res += e
-	return str(res)
+	tmp = LStrToStr(L)
+
+	return str(int(tmp, base=16))
 
 def LStrToStr(L):
 	""" list[str] -> str : Transforme une liste d'hexa en un mot Ox"""
