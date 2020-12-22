@@ -128,25 +128,23 @@ def analyseIP(L):
 	for i in range(3,len(Lb)):
 		res+= Lb[i]
 	res += "\n"
-<<<<<<< HEAD
 	res += "		Time To Live : "+projet.LStrToStr(L[22])+"("+projet.LStrToPort([L[22]])+")"+"\n"
 	res += "		Protocol : "+projet.LStrToStr(L[23])+"("+projet.LStrToPort([L[23]])+")"+"\n"
 	res += "		Header checksum : "+projet.LStrToStr(L[24:26])+"\n"
 	res += "		Adresse IP Source : "+projet.LStrToStr(L[26:30])+"("+projet.LStrToIp(L[26:30])+")"+"\n"
 	res += "		Adresse IP Destination : "+projet.LStrToStr(L[30:34])+"("+projet.LStrToIp(L[30:34])+")"+"\n"
-	
+
 	return res,34
 	"""option=L[34]
 	res += "	Option :"+projet.LStrToStr(L)+"("+projet.LStrToPort(L[23])+")"+"
 	return res,int(L[14][1])*4"""
-=======
+
 	res += "	Time To Live : "+projet.LStrToStr(L[22])+"("+projet.LStrToPort([L[22]])+")"+"\n"
 	res += "	Protocol : "+projet.LStrToStr(L[23])+"("+projet.LStrToPort([L[23]])+")"+"\n"
 	res += "	Header checksum : "+projet.LStrToStr(L[24:26])+"\n"
 	res += "	Adresse IP Source : "+projet.LStrToStr(L[26:30])+"("+projet.LStrToIp(L[26:30])+")"+"\n"
 	res += "	Adresse IP Destination : "+projet.LStrToStr(L[30:34])+"("+projet.LStrToIp(L[30:34])+")"+"\n"
 	return res,int(L[14][1])*4
->>>>>>> 48c43a2d58006b5b0d19138dac8655b3f9df0d6d
 
 
 
@@ -194,4 +192,3 @@ def analyseHTTP(L):
 
 	res+=bytes_object.decode("ASCII")
 	return res
-
