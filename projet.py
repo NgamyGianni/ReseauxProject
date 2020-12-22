@@ -6,7 +6,7 @@ import sys
 # Test si on peut ouvrir le fichier donné dans l'executable
 try:
 	f = open(sys.argv[1], "r")
-except: 
+except:
     print("Erreur: Le fichier source n'existe pas.")
     exit()
 
@@ -53,17 +53,24 @@ def LStrToPort(L):
 		res += e
 	return res
 
-#Adresse MAC : 
+def LStrToStr(L):
+	""" list[str] -> str : Transforme une liste d'hexa en un mot Ox"""
+	res = "0x"
+	for e in L:
+		res+=e
+	return res
+
+#Adresse MAC :
 macsrc = LStrToMac(L[6:12])
 macdst = LStrToMac(L[0:6])
 print(macsrc, "        ", macdst)
 
-#Adresse ip : 
+#Adresse ip :
 ipsrc = LStrToIp(L[26:30])
 ipdst = LStrToIp(L[30:34])
 print(ipsrc, "        ", ipdst)
 
-#Num port : 
+#Num port :
 portsrc = LStrToPort(L[34:36])
 portdst = LStrToPort(L[36:38])
 print(portsrc, "        ", portdst)
