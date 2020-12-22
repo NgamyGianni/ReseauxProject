@@ -145,7 +145,7 @@ def analyseIp(L):
 
 print(analyseIp(LL[0]))
 
-def AnalyseTCP(L):
+def analyseTCP(L):
 	a,i=analyseIp(L)
 	res = "TCP : \n"
 	res += "	Source port number : "+projet.LStrToStr(L[i:i+2])+"("+projet.LStrToPort(L[i:i+2])+")"+"\n"
