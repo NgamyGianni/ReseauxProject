@@ -118,7 +118,7 @@ print(analyseEthernet(LL[0]))
 def analyseIp(L):
 	res = "Ip : \n"
 	res += "	Version : 0x"+str(L[14][0])+" ("+str(L[14][0])+")"+"\n"
-	res += "	Header length : 0x"+str(L[14][1])+" ("+str(L[14][1]*4)+")"+"\n"
+	res += "	Header length : 0x"+str(L[14][1])+" ("+str(int(L[14][1])*4)+")"+"\n"
 	res += "	Type of service : "+projet.LStrToStr(L[15])+"\n"
 	res += "	Total Length : "+projet.LStrToStr(L[16:18])+" ("+projet.LStrToPort(L[16:18])+")"+"\n"
 	res += "	Identifier : "+projet.LStrToStr(L[18:20])+"\n"
