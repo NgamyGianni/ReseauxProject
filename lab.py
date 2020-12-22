@@ -136,7 +136,9 @@ def analyseIp(L):
 	res += "	Header checksum : "+projet.LStrToStr(L[24:26])+"\n"
 	res += "	Adresse IP Source : "+projet.LStrToStr(L[26:30])+"("+projet.LStrToIp(L[26:30])+")"+"\n"
 	res += "	Adresse IP Destination : "+projet.LStrToStr(L[30:34])+"("+projet.LStrToIp(L[30:34])+")"+"\n"
-	if L[14][1]*4 == 20:
+	if int(L[14][1])*4 == 20:
 		return res
+	#return res
+
 
 print(analyseIp(LL[0]))
