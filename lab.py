@@ -113,8 +113,8 @@ def analyseEthernet(L):
 print(analyseEthernet(LL[1])
 
 def analyseIp(L):
-	print(" Champ Ip Version : 0x0",L[14][0]," (",L[14][0],")")
-	print(" Champ Ip Header length : 0x0",L[14][1]," (",L[14][1]*4,")")
+	print(" Champ Ip Version : 0x",L[14][0]," (",L[14][0],")")
+	print(" Champ Ip Header length : 0x",L[14][1]," (",L[14][1]*4,")")
 	print(" Champ Ip Type of service : ",LStrToStr(L[15]))
 	print(" Champ Ip Total Length : ",LStrToStr(L[16:18])," (",LStrToPort(L[16:18]),")")
 	print(" Champ Ip Identifier : ",LStrToStr(L[18:20]))
