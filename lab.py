@@ -168,4 +168,15 @@ def analyseTCP(L):
 	res += "	Window : "+projet.LStrToStr(L[i+14:i+16])+"("+projet.LStrToPort(L[i+14:i+16])+")"+"\n"
 	res += "	Checksum : "+projet.LStrToStr(L[i+16:i+18])+"("+projet.LStrToPort(L[i+16:i+18])+")"+"\n"
 	res += "	Urgent Pointer : "+projet.LStrToStr(L[i+18:i+20])+"("+projet.LStrToPort(L[i+18:i+20])+")"+"\n"
+	return res,int("0b"+Lb[0]+Lb[1]+Lb[2]+Lb[3], base=2)*4
+
+def analyseHTTP(L):
+	a,i=analyseTCP(L)
+	LL=list()
+	res = "HTTP : \n"
+	while L[i:i+j] != ["0d","0a","0d","0a"]:
+		LL.append(L[i:i+j])
+		j=j+4
+	bytes_object=bytes.fromhex(LStrToStr(LL))
+	res+=bytes_object.decode("ASCII")
 	return res
