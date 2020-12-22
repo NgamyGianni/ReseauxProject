@@ -1,26 +1,3 @@
-import sys
-
-# file src = sys.argv[1]
-# file dst = sys.argv[2]
-"""
-# Test si on peut ouvrir le fichier donné dans l'executable
-try:
-	f = open(sys.argv[1], "r")
-except:
-    print("Erreur: Le fichier source n'existe pas.")
-    exit()
-
-d = open(sys.argv[2], "w") # Ouverture fichier dans lequel on va écrire
-
-L = list() # Contient les données de la trame
-Lres = list() # Test
-
-# Collecte les données contenues dans le fichier et les insère dans une liste : fonctionne avec ou sans saut à la ligne
-for line in f:
-	L.extend(line.split())
-
-print(L)
-"""
 def LStrToInt(L):
 	""" list[str] -> str : Transforme une liste d'hexa en liste d'entier"""
 	res = list()
@@ -60,6 +37,7 @@ def LStrToStr(L):
 	return res
 
 def LStrToBin(L):
+	""" list[str] -> str : Transforme une liste d'hexa en binaire sous forme de str"""
 	res=list()
 	tmp=LStrToInt(L)
 	for e in tmp:
@@ -70,19 +48,3 @@ def LStrToBin(L):
 		for i in range(len(b[2:])):
 			res.append(b[2+i])
 	return res
-"""
-#Adresse MAC :
-macsrc = LStrToMac(L[6:12])
-macdst = LStrToMac(L[0:6])
-print(macsrc, "        ", macdst)
-
-#Adresse ip :
-ipsrc = LStrToIp(L[26:30])
-ipdst = LStrToIp(L[30:34])
-print(ipsrc, "        ", ipdst)
-
-#Num port :
-portsrc = LStrToPort(L[34:36])
-portdst = LStrToPort(L[36:38])
-print(portsrc, "        ", portdst)
-"""
