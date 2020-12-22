@@ -60,6 +60,18 @@ def LStrToStr(L):
 		res+=e
 	return res
 
+def LStrToBin(L):
+	res=list()
+	tmp=LStrToInt(L)
+	for e in tmp:
+		b=bin(e)
+		if len(b[2:]) < 4:
+			for i in range(4-len(b[2:])):
+				res.append(0)
+		for i in range(len(b[2:])):
+			res.append(b[2+i])
+	return res
+
 #Adresse MAC :
 macsrc = LStrToMac(L[6:12])
 macdst = LStrToMac(L[0:6])
