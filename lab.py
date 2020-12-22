@@ -131,7 +131,7 @@ def analyseIp(L):
 	for i in range(3,len(Lb)):
 		res += Lb[i]
 	res += "\n"
-	
+	res += "	Time To Live : "+projet.LStrToStr(L[22])+"\n"
 
 	return res
 
