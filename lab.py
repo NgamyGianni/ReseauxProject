@@ -107,10 +107,14 @@ def analyseEthernet(L):
 
 	print("	Champ Ethernet Adresse Mac Destination : ",macDst)
 	print("	Champ Ethernet Adresse Mac Source : ",macSrc)
-	print("	Champ Ethernet Type : 0x",L[12],L[13],etherType)
+	print("	Champ Ethernet Type : ",LStrToStr(L[12:14])," ",etherType)
 	return etherType
 
 print(analyseEthernet(LL[1])
 
 def analyseIp(L):
-	pass
+	print(" Champ Ip Version : 0x0",L[14][0]," (",L[14][0],")")
+	print(" Champ Ip Header length : 0x0",L[14][1]," (",L[14][1]*4,")")
+	print(" Champ Ip Type of service : ",LStrToStr(L[15]))
+	print(" Champ Ip Total Length : ",LStrToStr(L[16:17])," (",LStrToPort(L[16:17]),")")
+	print(" ")
