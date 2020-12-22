@@ -131,8 +131,8 @@ def analyseIp(L):
 	for i in range(3,len(Lb)):
 		res+= Lb[i]
 	res += "\n"
-	res += "	Time To Live : "+projet.LStrToStr(L[22])+"("+projet.LStrToPort(L[22])+")"+"\n"
-	res += "	Protocol : "+projet.LStrToStr(L[23])+"("+projet.LStrToPort(L[23])+")"+"\n"
+	res += "	Time To Live : "+projet.LStrToStr(L[22])+"("+projet.LStrToPort([L[22]])+")"+"\n"
+	res += "	Protocol : "+projet.LStrToStr(L[23])+"("+projet.LStrToPort([L[23]])+")"+"\n"
 	res += "	Header checksum : "+projet.LStrToStr(L[24:26])+"\n"
 	res += "	Adresse IP Source : "+projet.LStrToStr(L[26:30])+"("+projet.LStrToIp(L[26:30])+")"+"\n"
 	res += "	Adresse IP Destination : "+projet.LStrToStr(L[30:34])+"("+projet.LStrToIp(L[30:34])+")"+"\n"
@@ -168,7 +168,7 @@ def analyseTCP(L):
 	res += "	Window : "+projet.LStrToStr(L[i+14:i+16])+"("+projet.LStrToPort(L[i+14:i+16])+")"+"\n"
 	res += "	Checksum : "+projet.LStrToStr(L[i+16:i+18])+"("+projet.LStrToPort(L[i+16:i+18])+")"+"\n"
 	res += "	Urgent Pointer : "+projet.LStrToStr(L[i+18:i+20])+"("+projet.LStrToPort(L[i+18:i+20])+")"+"\n"
-	return res,int("0b"+Lb[0]+Lb[1]+Lb[2]+Lb[3], base=2)*4
+	return res,int("0b"+Lb[0]+Lb[1]+Lb[2]+Lb[3], base=2)*4+i
 
 def analyseHTTP(L):
 	a,i=analyseTCP(L)
