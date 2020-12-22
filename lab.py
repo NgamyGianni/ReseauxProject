@@ -178,13 +178,10 @@ def analyseHTTP(L):
 	res = "HTTP : \n"
 	while L[i] != "0d" and L[i+1] != "0a" and L[i+2] != "0d" and L[i+3] != "0a":
 		tmp.append(L[i])
-<<<<<<< HEAD
+		
 		i+=1
 	bytes_object=bytes.fromhex(projet.LStrToStr(tmp)[2:])
-	print(bytes_object)
-=======
-	bytes_object=bytes.fromhex(LStrToStr(tmp)[2:])
->>>>>>> b2420e8882de0d63d7090501fb128eee9c1c3a94
+
 	res+=bytes_object.decode("ASCII")
 	return res
 
