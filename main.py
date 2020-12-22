@@ -1,6 +1,6 @@
 import lab
 import projet
-import sys 
+import sys
 
 if len(sys.argv) != 3: # Si il y a bien 2 arguments, correspondant aux fichiers source et destination
 	print("Erreur : Usage : <nom du fichier source> <nom du fichier destination>")
