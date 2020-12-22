@@ -131,8 +131,12 @@ def analyseIp(L):
 	for i in range(3,len(Lb)):
 		res+= Lb[i]
 	res += "\n"
-	res += "	Time To Live : "+projet.LStrToStr(L[22])+"\n"
-	res += "	"
-	return res
+	res += "	Time To Live : "+projet.LStrToStr(L[22])+"("+projet.LStrToPort(L[22])+")"+"\n"
+	res += "	Protocol : "+projet.LStrToStr(L[23])+"("+projet.LStrToPort(L[23])+")"+"\n"
+	res += "	Header checksum : "+projet.LStrToStr(L[24:26])+"\n"
+	res += "	Adresse IP Source : "+projet.LStrToStr(L[26:30])+"("+projet.LStrToIp(L[26:30])+")"+"\n"
+	res += "	Adresse IP Destination : "+projet.LStrToStr(L[30:34])+"("+projet.LStrToIp(L[30:34])+")"+"\n"
+	if L[14][1]*4 == 20:
+		return res
 
 print(analyseIp(LL[0]))
